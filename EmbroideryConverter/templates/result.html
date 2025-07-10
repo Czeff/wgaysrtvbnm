@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embroidery Pattern Generated</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="text-center mb-4">
+                    <h1><i class="fas fa-check-circle text-success me-2"></i>Pattern Generated Successfully!</h1>
+                    <p class="lead">Your embroidery pattern has been created from <strong>{{ original_filename }}</strong></p>
+                </div>
+
+                <!-- Pattern Preview -->
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-eye me-2"></i>Embroidery Pattern Preview
+                        </h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="pattern-preview">
+                            <img src="{{ url_for('preview_image', filename=preview_image) }}" 
+                                 alt="Embroidery Pattern Preview" 
+                                 class="img-fluid border rounded shadow-sm"
+                                 style="max-width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pattern Information -->
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-info-circle me-2"></i>Pattern Information
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-cogs fa-2x text-primary mb-2"></i>
+                                    <h6>Processing Type</h6>
+                                    <p class="text-muted small">{{ processing_info.processing_type }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-cut fa-2x text-info mb-2"></i>
+                                    <h6>Stitch Count</h6>
+                                    <p class="text-muted small">{{ processing_info.stitch_count }} stitches</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-palette fa-2x text-warning mb-2"></i>
+                                    <h6>Colors Used</h6>
+                                    <p class="text-muted small">{{ processing_info.color_count }} colors</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-expand-arrows-alt fa-2x text-success mb-2"></i>
+                                    <h6>Pattern Size</h6>
+                                    <p class="text-muted small">{{ "%.0f"|format(processing_info.pattern_size[0]) }} × {{ "%.0f"|format(processing_info.pattern_size[1]) }} units</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Details -->
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-tools me-2"></i>Technical Details
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-file-alt me-2"></i>File Processing</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>Original file:</strong> {{ original_filename }}</li>
+                                    <li><strong>Processing:</strong> {{ processing_info.processing_type }}</li>
+                                    <li><strong>Status:</strong> <span class="badge bg-success">Complete</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-chart-line me-2"></i>Pattern Statistics</h6>
+                                <ul class="list-unstyled">
+                                    <li><strong>Total stitches:</strong> {{ processing_info.stitch_count }}</li>
+                                    <li><strong>Color threads:</strong> {{ processing_info.color_count }}</li>
+                                    <li><strong>DST file:</strong> <span class="badge bg-success">Generated</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="text-center mb-4">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-upload me-2"></i>Process Another Image
+                    </a>
+                </div>
+
+                <!-- Information Note -->
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Note:</strong> The DST embroidery file has been generated internally for processing. 
+                    The preview image shows how your embroidery pattern will look when stitched.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

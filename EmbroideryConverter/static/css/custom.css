@@ -1,0 +1,172 @@
+/* Custom styles for the embroidery pattern generator */
+
+.pattern-preview {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bs-light);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.pattern-preview img {
+    max-height: 500px;
+    width: auto;
+    border: 2px solid var(--bs-border-color);
+}
+
+.upload-zone {
+    border: 2px dashed var(--bs-border-color);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-zone:hover {
+    border-color: var(--bs-primary);
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.upload-zone.dragover {
+    border-color: var(--bs-success);
+    background-color: var(--bs-success-bg-subtle);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.processing-step {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bs-secondary-bg);
+}
+
+.stats-card {
+    background: linear-gradient(135deg, var(--bs-primary-bg-subtle), var(--bs-info-bg-subtle));
+    border: none;
+    border-radius: 1rem;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.progress-container {
+    margin-top: 1rem;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Dark mode specific adjustments */
+[data-bs-theme="dark"] .pattern-preview {
+    background-color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .upload-zone {
+    background-color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .pattern-preview img {
+    border-color: var(--bs-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pattern-preview {
+        min-height: 200px;
+    }
+    
+    .pattern-preview img {
+        max-height: 300px;
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+    }
+}
+
+/* Animation for loading states */
+.loading-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Custom file input styling */
+.form-control[type="file"] {
+    padding: 0.5rem;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button {
+    padding: 0.375rem 0.75rem;
+    margin-right: 0.75rem;
+    background-color: var(--bs-secondary);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.375rem;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button:hover {
+    background-color: var(--bs-secondary-hover);
+}
+
+/* Badge styling for status indicators */
+.badge {
+    font-size: 0.75em;
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Enhanced button styling */
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
